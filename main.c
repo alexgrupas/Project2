@@ -1,6 +1,6 @@
-#include <stdio.h>
+#include "Options.h"
 
 int main() {
-    printf("Hello, World!\n");
+    printHello();
     return 0;
 }

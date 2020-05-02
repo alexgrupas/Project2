@@ -5,8 +5,9 @@
 #ifndef PROJECT2_OPTIONS_H
 #define PROJECT2_OPTIONS_H
 
-#include <stdio.h>
-#include <unistd.h>
+#include <stdio.h> //printf
+#include <unistd.h> //getopt
+#include <stdlib.h> //exit, atoi
 
 // Flag Declarations
 extern int helpFlag;

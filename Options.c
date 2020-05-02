@@ -24,15 +24,22 @@ void setFlags(int argc, char** argv)
     initFlags();
 
     int opt;
-    while((opt = getopt(argc, argv, "h"))  != -1)
+    while((opt = getopt(argc, argv, "hn:"))  != -1)
     {
         switch (opt) {
             case 'h':
                 printHelpMessage();
+                exit(0);
+
+            case 'n':
+                maxChildFlag = atoi(optarg);
+                printf("%d\n", maxChildFlag);
                 break;
 
             case '?':
-                printf("Question mark case reached switch in setFlags function\n");
+                printf("Make sure to print arguments along with the flags\n");
+                printHelpMessage();
+                exit(0);
         }
     }
 }

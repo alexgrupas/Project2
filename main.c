@@ -1,6 +1,6 @@
 #include "Options.h"
 
-int main() {
-    printHello();
+int main(int argc, char** argv) {
+    setFlags();
     return 0;
 }

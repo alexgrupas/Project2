@@ -5,6 +5,19 @@
 #ifndef PROJECT2_OPTIONS_H
 #define PROJECT2_OPTIONS_H
 
-void printHello();
+#include <stdio.h>
+#include <unistd.h>
+
+// Flag Declarations
+extern int helpFlag;
+extern int maxChildFlag;
+extern int numChildAtOneTimeFlag;
+extern int numToTestFlag;
+extern int incrementFlag;
+
+static void initFlags();
+void setFlags();
+void printHelpMessage();
+
 
 #endif //PROJECT2_OPTIONS_H

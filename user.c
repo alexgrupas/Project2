@@ -19,6 +19,7 @@ typedef struct {
 int main(int argc, char** argv)
 {
     int shmid;
+    int clockStart;
     key_t key;
     shared_memory *shmptr;
 
@@ -31,11 +32,15 @@ int main(int argc, char** argv)
         quit("user: shmat");
 
     printf("seconds: %d\n", shmptr->clock_seconds);
+    clockStart = shmptr->clock_seconds;
+    while(1) {
+        if (shmptr->clock_seconds == (clockStart + 100000000))
+        {
+            shmptr->clock_nanoseconds = 1;
+            break;
+        }
 
-    sleep(2);
-    shmptr->clock_nanoseconds = 1;
-    printf("seconds after sleep: %d\n", shmptr->clock_seconds);
-
+    }
     //detach shmptr
     if((shmdt(shmptr)) == -1)
         quit("shmdt");

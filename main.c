@@ -14,7 +14,7 @@ int main(int argc, char** argv) {
     char *shm, *s;
     int shmid;
     char c;
-    if(shmid = shmget(key, 1024, 0666 | IPC_CREAT) < 0)
+    if((shmid = shmget(key, 1024, 0666 | IPC_CREAT)) < 0)
         quit("shmget");
 
 

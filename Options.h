@@ -6,7 +6,7 @@
 #define PROJECT2_OPTIONS_H
 
 #include <stdio.h> //printf
-#include <unistd.h> //getopt
+#include <unistd.h> //getopt, pid,
 #include <stdlib.h> //exit, atoi
 
 // Flag Declarations

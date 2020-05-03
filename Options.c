@@ -24,7 +24,7 @@ void setFlags(int argc, char** argv)
     initFlags();
 
     int opt;
-    while((opt = getopt(argc, argv, "hn:"))  != -1)
+    while((opt = getopt(argc, argv, "hn:s:"))  != -1)
     {
         switch (opt) {
             case 'h':
@@ -33,15 +33,42 @@ void setFlags(int argc, char** argv)
 
             case 'n':
                 maxChildFlag = atoi(optarg);
-                printf("%d\n", maxChildFlag);
+                break;
+
+            case 's':
+                numChildAtOneTimeFlag = atoi(optarg);
+                break;
+
+            case 'b':
+                numToTestFlag = atoi(optarg);
+                break;
+
+            case 'i':
+                incrementFlag = atoi(optarg);
                 break;
 
             case '?':
-                printf("Make sure to print arguments along with the flags\n");
+                printf("No argument given with flag(s)... using default\n");
                 printHelpMessage();
-                exit(0);
+                break;
         }
     }
+
+    if(maxChildFlag == 0)
+        maxChildFlag = 4;
+    if(numChildAtOneTimeFlag == 0)
+        numChildAtOneTimeFlag = 2;
+    if(numToTestFlag == 0)
+        numToTestFlag = 101;
+    if(incrementFlag == 0)
+        incrementFlag = 4;
+
+
+    //For testing
+    printf("%d\n", maxChildFlag);
+    printf("%d\n", numChildAtOneTimeFlag);
+    printf("%d\n", numToTestFlag);
+    printf("%d\n", incrementFlag);
 }
 
 void printHelpMessage()

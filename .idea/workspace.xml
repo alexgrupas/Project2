@@ -14,7 +14,7 @@
     <list default="true" id="b2d6d068-e581-4420-b13a-93dc589a7c39" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Options.c" beforeDir="false" afterPath="$PROJECT_DIR$/Options.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Options.h" beforeDir="false" afterPath="$PROJECT_DIR$/Options.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +45,7 @@
     <property name="cf.first.check.clang-format" value="false" />
   </component>
   <component name="RunManager">
-    <configuration name="Project2" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-n" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project2" TARGET_NAME="Project2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project2" RUN_TARGET_NAME="Project2">
+    <configuration name="Project2" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-n 3 -s" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Project2" TARGET_NAME="Project2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Project2" RUN_TARGET_NAME="Project2">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -63,7 +63,8 @@
       <updated>1588282278280</updated>
       <workItem from="1588282280964" duration="61000" />
       <workItem from="1588282385668" duration="2432000" />
-      <workItem from="1588394294311" duration="2952000" />
+      <workItem from="1588394294311" duration="3042000" />
+      <workItem from="1588476489691" duration="2386000" />
     </task>
     <task id="LOCAL-00001" summary="Added an options file and header">
       <created>1588307424924</created>
@@ -79,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588396646451</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="n flag done">
+      <created>1588397637974</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1588397637974</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -88,17 +96,18 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added an options file and header" />
     <MESSAGE value="Built some functions in the Options file.&#10;initFlags - Done&#10;printHelpMessage - Started&#10;setFlags - Started" />
-    <option name="LAST_COMMIT_MESSAGE" value="Built some functions in the Options file.&#10;initFlags - Done&#10;printHelpMessage - Started&#10;setFlags - Started" />
+    <MESSAGE value="n flag done" />
+    <option name="LAST_COMMIT_MESSAGE" value="n flag done" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588397136062">
+    <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588476993489">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1588397136062" />
-    <state x="217" y="30" key="CommitChangelistDialog2" timestamp="1588396646098">
+    <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1588476993489" />
+    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1588397637660">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="217" y="30" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588396646098" />
+    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588397637660" />
     <state x="593" y="365" width="479" height="192" key="Github.ShareDialog" timestamp="1588282501010">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -107,29 +116,29 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="410" y="173" key="Github.UntrackedFilesDialog/0.23.1440.877@0.23.1440.877" timestamp="1588282518987" />
-    <state width="1398" height="231" key="GridCell.Tab.0.bottom" timestamp="1588397405920">
+    <state width="1398" height="224" key="GridCell.Tab.0.bottom" timestamp="1588479344399">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="231" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1588397405920" />
-    <state width="1398" height="231" key="GridCell.Tab.0.center" timestamp="1588397405918">
+    <state width="1398" height="224" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1588479344399" />
+    <state width="1398" height="224" key="GridCell.Tab.0.center" timestamp="1588479344399">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="231" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1588397405918" />
-    <state width="1398" height="231" key="GridCell.Tab.0.left" timestamp="1588397405917">
+    <state width="1398" height="224" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1588479344399" />
+    <state width="1398" height="224" key="GridCell.Tab.0.left" timestamp="1588479344398">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="231" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1588397405917" />
-    <state width="1398" height="231" key="GridCell.Tab.0.right" timestamp="1588397405919">
+    <state width="1398" height="224" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1588479344398" />
+    <state width="1398" height="224" key="GridCell.Tab.0.right" timestamp="1588479344399">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="231" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1588397405919" />
-    <state x="320" y="188" key="Vcs.Push.Dialog.v2" timestamp="1588396648475">
+    <state width="1398" height="224" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1588479344399" />
+    <state x="320" y="188" key="Vcs.Push.Dialog.v2" timestamp="1588397639444">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="320" y="188" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1588396648475" />
-    <state x="508" y="382" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588394306340">
+    <state x="320" y="188" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1588397639444" />
+    <state x="508" y="382" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588478812693">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="508" y="382" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.877@0.23.1440.877" timestamp="1588394306340" />
+    <state x="508" y="382" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.877@0.23.1440.877" timestamp="1588478812693" />
   </component>
 </project>

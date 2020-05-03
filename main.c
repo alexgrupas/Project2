@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
     if((shmid = shmget(key, 1024, 0666 | IPC_CREAT)) < 0)
         quit("shmget");
 
-    if ((shmptr = shmat(shmid, NULL, 0)) == (char *) -1)
+    if ((shmptr = shmat(shmid, NULL, 0)) == (void *) -1)
         quit("shmat");
 
     shmptr->clock_seconds = 100;

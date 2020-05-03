@@ -27,10 +27,10 @@ int main(int argc, char** argv)
     if ((shmid = shmget(key, 1024, 0666)) < 0)
         quit("shmget");
 
-    if ((shmptr = shmat(shmid, NULL, 0)) == (char *) -1)
+    if ((shmptr = shmat(shmid, NULL, 0)) == (void *) -1)
         quit("user: shmat");
 
-    printf("seconds: %d\n", shmptr->clock_seconds)
+    printf("seconds: %d\n", shmptr->clock_seconds);
 
     //detach shmptr
     if((shmdt(shmptr)) == (void *) -1)

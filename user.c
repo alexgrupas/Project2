@@ -40,9 +40,6 @@ int main(int argc, char** argv)
     if((shmdt(shmptr)) == -1)
         quit("shmdt");
 
-    //destroy shared mem
-    if((shmctl(shmid, IPC_RMID, NULL)) == -1)
-        quit("shmctl");
 
     return 0;
 }

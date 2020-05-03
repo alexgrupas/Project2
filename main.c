@@ -43,7 +43,7 @@ int main(int argc, char** argv) {
     {
         if(shmptr->clock_nanoseconds == 1)
             break;
-        shmptr->clock_seconds = shmptr->clock_seconds + 100;
+        shmptr->clock_seconds = shmptr->clock_seconds + 1;
     }
 
 
@@ -51,6 +51,9 @@ int main(int argc, char** argv) {
     if((shmdt(shmptr)) == -1)
         quit("shmdt");
 
+    //destroy shared mem
+    if((shmctl(shmid, IPC_RMID, NULL)) == -1)
+        quit("shmctl");
 
     return 0;
 }

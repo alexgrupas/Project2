@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
     if(childpid == 0)
     {
         execlp("./user", NULL);
-        return 1;
+        exit(1);
     }
     return 0;
 }

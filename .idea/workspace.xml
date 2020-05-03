@@ -12,8 +12,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2d6d068-e581-4420-b13a-93dc589a7c39" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/user.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +62,7 @@
       <workItem from="1588282280964" duration="61000" />
       <workItem from="1588282385668" duration="2432000" />
       <workItem from="1588394294311" duration="3042000" />
-      <workItem from="1588476489691" duration="4097000" />
+      <workItem from="1588476489691" duration="4395000" />
     </task>
     <task id="LOCAL-00001" summary="Added an options file and header">
       <created>1588307424924</created>
@@ -94,7 +92,21 @@
       <option name="project" value="LOCAL" />
       <updated>1588479413179</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="child process creation">
+      <created>1588530650618</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1588530650618</updated>
+    </task>
+    <task id="LOCAL-00006" summary="child process creation">
+      <created>1588530827660</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1588530827660</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,17 +117,18 @@
     <MESSAGE value="Built some functions in the Options file.&#10;initFlags - Done&#10;printHelpMessage - Started&#10;setFlags - Started" />
     <MESSAGE value="n flag done" />
     <MESSAGE value="Option flag stuff is done&#10;Shared Memory started and going well" />
-    <option name="LAST_COMMIT_MESSAGE" value="Option flag stuff is done&#10;Shared Memory started and going well" />
+    <MESSAGE value="child process creation" />
+    <option name="LAST_COMMIT_MESSAGE" value="child process creation" />
   </component>
   <component name="WindowStateProjectService">
     <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588476993489">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1588476993489" />
-    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1588479412840">
+    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1588530827411">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588479412840" />
+    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588530827411" />
     <state x="593" y="365" width="479" height="192" key="Github.ShareDialog" timestamp="1588282501010">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -140,13 +153,13 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1398" height="224" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1588479344399" />
-    <state x="320" y="188" key="Vcs.Push.Dialog.v2" timestamp="1588479415706">
+    <state x="320" y="188" key="Vcs.Push.Dialog.v2" timestamp="1588530828995">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="320" y="188" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1588479415706" />
-    <state x="508" y="382" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588530310299">
+    <state x="320" y="188" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1588530828995" />
+    <state x="508" y="382" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588530822818">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="508" y="382" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.877@0.23.1440.877" timestamp="1588530310299" />
+    <state x="508" y="382" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.877@0.23.1440.877" timestamp="1588530822818" />
   </component>
 </project>

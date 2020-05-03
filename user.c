@@ -6,28 +6,39 @@
 #include <sys/shm.h>
 #include <unistd.h>
 
-
+void quit(char*);
 
 int main(int argc, char** argv)
 {
+    int shmid;
+    key_t key;
+    char *shm, *s;
 
-    key_t key = ftok("./test", 20);
-    int shmid = shmget(1234,1024, 0666 | IPC_CREAT);
-    if (shmid == -1) {
-        perror("Shared memory");
-        return 0;
-    }
-    char *str = (char*) shmat(shmid,(void*)0,0);
+    key = 1234;
 
+    if ((shmid = shmget(key, 1024, 0666)) < 0)
+        quit("shmget");
 
-    //print shared memory
-    printf("hello%s\n", str);
+    if ((shm = shmat(shmid, NULL, 0)) == (char *) -1)
+        quit("shmat");
 
+    //Now read what the server put in the memory.
+    for (s = shm; *s != '\0'; s++)
+        putchar(*s);
+    putchar('\n');
 
-    //detach from shared memory
-    shmdt(str);
+    /*
+     *Change the first character of the
+     *segment to '*', indicating we have read
+     *the segment.
+     */
+    *shm = '*';
 
-    //clear the shared memory..
-    shmctl(shmid,IPC_RMID,NULL);
     return 0;
+}
+
+void quit(char* str)
+{
+    perror(str);
+    exit(1);
 }

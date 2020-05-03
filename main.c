@@ -4,39 +4,47 @@
 #include <unistd.h>
 #include <signal.h>
 
+void quit(char*);
+
 
 int main(int argc, char** argv) {
     setFlags();
 
-    key_t key = ftok("./test", 20);
-    int shmid = shmget(1234,1024, 0666 | IPC_CREAT);
-    if (shmid == -1) {
-        perror("Shared memory");
-        return 0;
-    }
-    char *str;
-    if(str = (char*) shmat(shmid,(void*)0,0) == (char *) -1)
-    {
-        perror("shmat");
-        exit(1);
-    }
-    str = "This is a test";
-    printf("Data written in memory: %s\n",str);
-    //detach from shared memory
-    shmdt(str);
+    key_t key = 1234;
+    char *shm, *s;
+    int shmid;
+    char c;
+    if(shmid = shmget(key, 1024, 0666 | IPC_CREAT) < 0)
+        quit("shmget");
 
 
+    if ((shm = shmat(shmid, NULL, 0)) == (char *) -1)
+        quit("shmat");
+
+    s = shm;
+    for (c = 'a'; c <= 'z'; c++)
+        *s++ = c;
+
+    //Create child and exec user
     pid_t childpid;
     childpid = fork();
     if(childpid == -1)
-        perror("Failed to create child process\n");
+        quit("fork");
     if(childpid == 0)
     {
         execlp("./user", NULL);
         exit(1);
     }
 
-    wait(NULL);
+
+    while (*shm != '*')
+        sleep(1);
 
     return 0;
+}
+
+void quit(char* str)
+{
+    perror(str);
+    exit(1);
 }

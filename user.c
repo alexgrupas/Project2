@@ -6,11 +6,13 @@
 #include <sys/shm.h>
 #include <unistd.h>
 
+
+
 int main(int argc, char** argv)
 {
 
     key_t key = ftok("test", 20);
-    int shmid = shmget(key,1024,0666|IPC_CREAT);
+    int shmid = shmget(key,1024, 0666 | IPC_CREAT);
     if (shmid == -1) {
         perror("Shared memory");
         return 0;

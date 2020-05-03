@@ -27,9 +27,6 @@ int main(int argc, char** argv) {
 
     shmptr->clock_seconds = 100;
 
-    //detach shmptr
-    if((shmdt(shmptr)) == (void *) -1)
-        quit("shmdt");
 
     //Create child and exec user
     pid_t childpid;
@@ -42,7 +39,18 @@ int main(int argc, char** argv) {
         exit(1);
     }
 
-    wait(NULL);
+    while(1)
+    {
+        if(wait(NULL))
+            break;
+        shmptr->clock_seconds += 100;
+    }
+
+
+    //detach shmptr
+    if((shmdt(shmptr)) == -1)
+        quit("shmdt");
+
 
     return 0;
 }

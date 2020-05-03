@@ -32,8 +32,11 @@ int main(int argc, char** argv)
 
     printf("seconds: %d\n", shmptr->clock_seconds);
 
+    sleep(2);
+    printf("seconds after sleep: %d\n", shmptr->clock_seconds);
+
     //detach shmptr
-    if((shmdt(shmptr)) == (void *) -1)
+    if((shmdt(shmptr)) == -1)
         quit("shmdt");
 
     //destroy shared mem

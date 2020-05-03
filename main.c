@@ -9,7 +9,7 @@ int main(int argc, char** argv) {
     setFlags();
 
     key_t key = ftok("./test", 20);
-    int shmid = shmget(key,1024, 0666 | IPC_CREAT);
+    int shmid = shmget(1234,1024, 0666 | IPC_CREAT);
     if (shmid == -1) {
         perror("Shared memory");
         return 0;

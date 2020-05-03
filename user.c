@@ -34,14 +34,16 @@ int main(int argc, char** argv)
     printf("seconds: %d\n", shmptr->clock_seconds);
     clockStart = shmptr->clock_seconds;
     while(1) {
-        if (shmptr->clock_seconds == (clockStart + 100000000))
+        if (shmptr->clock_seconds > (clockStart + 10000000))
         {
-            shmptr->clock_nanoseconds = 1;
+            printf("seconds: %d\n", shmptr->clock_seconds);
+            printf("clock start: %d\n", clockStart);
             break;
         }
 
     }
     //detach shmptr
+    shmptr->clock_nanoseconds = 1;
     if((shmdt(shmptr)) == -1)
         quit("shmdt");
 

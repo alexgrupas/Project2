@@ -43,7 +43,7 @@ int main(int argc, char** argv) {
     {
         if(wait(NULL))
             break;
-        shmptr->clock_seconds += 100;
+        shmptr->clock_seconds = shmptr->clock_seconds + 100;
     }
 
 

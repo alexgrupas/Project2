@@ -21,5 +21,16 @@ int main(int argc, char** argv) {
 
     //clear the shared memory..
     shmctl(shmid,IPC_RMID,NULL);
+
+
+    pid_t childpid;
+    childpid = fork();
+    if(childpid == -1)
+        perror("Failed to create child process\n");
+    if(childpid == 0)
+    {
+        execlp("user", NULL);
+        return 1;
+    }
     return 0;
 }

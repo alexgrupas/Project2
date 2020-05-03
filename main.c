@@ -14,7 +14,12 @@ int main(int argc, char** argv) {
         perror("Shared memory");
         return 0;
     }
-    char *str = (char*) shmat(shmid,(void*)0,0);
+    char *str;
+    if(str = (char*) shmat(shmid,(void*)0,0) == (char *) -1)
+    {
+        perror("shmat");
+        exit(1);
+    }
     str = "This is a test";
     printf("Data written in memory: %s\n",str);
     //detach from shared memory
@@ -32,7 +37,6 @@ int main(int argc, char** argv) {
     }
 
     wait(NULL);
-    printf("Wait done!");
 
     return 0;
 }

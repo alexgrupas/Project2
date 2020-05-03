@@ -32,6 +32,7 @@ int main(int argc, char** argv) {
     }
 
     wait(NULL);
+    printf("Wait done!");
 
     return 0;
 }

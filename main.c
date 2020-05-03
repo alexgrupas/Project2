@@ -19,9 +19,6 @@ int main(int argc, char** argv) {
     //detach from shared memory
     shmdt(str);
 
-    //clear the shared memory..
-    shmctl(shmid,IPC_RMID,NULL);
-
 
     pid_t childpid;
     childpid = fork();
@@ -32,5 +29,7 @@ int main(int argc, char** argv) {
         execlp("./user", NULL);
         exit(1);
     }
+
+
     return 0;
 }

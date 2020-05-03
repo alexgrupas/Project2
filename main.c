@@ -29,7 +29,7 @@ int main(int argc, char** argv) {
         perror("Failed to create child process\n");
     if(childpid == 0)
     {
-        execlp("user", NULL);
+        execlp("./user", NULL);
         return 1;
     }
     return 0;

@@ -6,24 +6,30 @@
 
 void quit(char*);
 
+typedef struct {
+    int id;
+    int index;  //key_t key;
+    int clock_seconds;
+    int clock_nanoseconds;
+} shared_memory;
 
 int main(int argc, char** argv) {
     setFlags();
 
     key_t key = 1234;
-    char *shm, *s;
+    shared_memory *shmptr;
     int shmid;
-    char c;
     if((shmid = shmget(key, 1024, 0666 | IPC_CREAT)) < 0)
         quit("shmget");
 
+    if ((shmptr = shmat(shmid, NULL, 0)) == (char *) -1)
+        quit("shmat");
 
-    if ((shm = shmat(shmid, NULL, 0)) == (char *) -1)
-        quit("main: shmat");
+    shmptr->clock_seconds = 100;
 
-    s = shm;
-    for (c = 'a'; c <= 'z'; c++)
-        *s++ = c;
+    //detach shmptr
+    if((shmdt(shmptr)) == (void *) -1)
+        quit("shmdt");
 
     //Create child and exec user
     pid_t childpid;
@@ -36,9 +42,7 @@ int main(int argc, char** argv) {
         exit(1);
     }
 
-
-    while (*shm != '*')
-        sleep(1);
+    wait(NULL);
 
     return 0;
 }

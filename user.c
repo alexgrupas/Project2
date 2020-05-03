@@ -9,31 +9,36 @@
 
 void quit(char*);
 
+typedef struct {
+    int id;
+    int index;  //key_t key;
+    int clock_seconds;
+    int clock_nanoseconds;
+} shared_memory;
+
 int main(int argc, char** argv)
 {
     int shmid;
     key_t key;
-    char *shm, *s;
+    shared_memory *shmptr;
 
     key = 1234;
 
     if ((shmid = shmget(key, 1024, 0666)) < 0)
         quit("shmget");
 
-    if ((shm = shmat(shmid, NULL, 0)) == (char *) -1)
+    if ((shmptr = shmat(shmid, NULL, 0)) == (char *) -1)
         quit("user: shmat");
 
-    //Now read what the server put in the memory.
-    for (s = shm; *s != '\0'; s++)
-        putchar(*s);
-    putchar('\n');
+    printf("seconds: %d\n", shmptr->clock_seconds)
 
-    /*
-     *Change the first character of the
-     *segment to '*', indicating we have read
-     *the segment.
-     */
-    *shm = '*';
+    //detach shmptr
+    if((shmdt(shmptr)) == (void *) -1)
+        quit("shmdt");
+
+    //destroy shared mem
+    if((shmctl(shmid, IPC_RMID, NULL)) == -1)
+        quit("shmctl");
 
     return 0;
 }

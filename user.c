@@ -21,7 +21,7 @@ int main(int argc, char** argv)
         quit("shmget");
 
     if ((shm = shmat(shmid, NULL, 0)) == (char *) -1)
-        quit("shmat");
+        quit("user: shmat");
 
     //Now read what the server put in the memory.
     for (s = shm; *s != '\0'; s++)

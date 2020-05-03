@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
 
 
     if ((shm = shmat(shmid, NULL, 0)) == (char *) -1)
-        quit("shmat");
+        quit("main: shmat");
 
     s = shm;
     for (c = 'a'; c <= 'z'; c++)

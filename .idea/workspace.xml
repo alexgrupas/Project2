@@ -12,7 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2d6d068-e581-4420-b13a-93dc589a7c39" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Options.h" beforeDir="false" afterPath="$PROJECT_DIR$/Options.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user.c" beforeDir="false" afterPath="$PROJECT_DIR$/user.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +63,7 @@
       <workItem from="1588282280964" duration="61000" />
       <workItem from="1588282385668" duration="2432000" />
       <workItem from="1588394294311" duration="3042000" />
-      <workItem from="1588476489691" duration="4395000" />
+      <workItem from="1588476489691" duration="4701000" />
     </task>
     <task id="LOCAL-00001" summary="Added an options file and header">
       <created>1588307424924</created>
@@ -106,7 +107,28 @@
       <option name="project" value="LOCAL" />
       <updated>1588530827660</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="child process creation">
+      <created>1588530963659</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1588530963659</updated>
+    </task>
+    <task id="LOCAL-00008" summary="child process accessing shared memory">
+      <created>1588531151217</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1588531151217</updated>
+    </task>
+    <task id="LOCAL-00009" summary="fixing some errors">
+      <created>1588531263122</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1588531263122</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,17 +140,19 @@
     <MESSAGE value="n flag done" />
     <MESSAGE value="Option flag stuff is done&#10;Shared Memory started and going well" />
     <MESSAGE value="child process creation" />
-    <option name="LAST_COMMIT_MESSAGE" value="child process creation" />
+    <MESSAGE value="child process accessing shared memory" />
+    <MESSAGE value="fixing some errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing some errors" />
   </component>
   <component name="WindowStateProjectService">
     <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588476993489">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1588476993489" />
-    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1588530827411">
+    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1588531262896">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588530827411" />
+    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588531262896" />
     <state x="593" y="365" width="479" height="192" key="Github.ShareDialog" timestamp="1588282501010">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -153,10 +177,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1398" height="224" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1588479344399" />
-    <state x="320" y="188" key="Vcs.Push.Dialog.v2" timestamp="1588530828995">
+    <state x="320" y="188" key="Vcs.Push.Dialog.v2" timestamp="1588531264552">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="320" y="188" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1588530828995" />
+    <state x="320" y="188" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1588531264552" />
     <state x="508" y="382" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588530822818">
       <screen x="0" y="23" width="1440" height="877" />
     </state>

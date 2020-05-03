@@ -17,11 +17,13 @@ int main(int argc, char** argv)
     }
     char *str = (char*) shmat(shmid,(void*)0,0);
 
-    //detach from shared memory
-    shmdt(str);
 
     //print shared memory
     printf("%s\n", str);
+
+
+    //detach from shared memory
+    shmdt(str);
 
     //clear the shared memory..
     shmctl(shmid,IPC_RMID,NULL);

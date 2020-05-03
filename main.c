@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
 
     while(1)
     {
-        if(wait(NULL))
+        if(shmptr->clock_nanoseconds == 1)
             break;
         shmptr->clock_seconds = shmptr->clock_seconds + 100;
     }

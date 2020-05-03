@@ -33,6 +33,7 @@ int main(int argc, char** argv)
     printf("seconds: %d\n", shmptr->clock_seconds);
 
     sleep(2);
+    shmptr->clock_nanoseconds = 1;
     printf("seconds after sleep: %d\n", shmptr->clock_seconds);
 
     //detach shmptr

@@ -21,7 +21,7 @@ int main(int argc, char** argv)
 
 
     //print shared memory
-    printf("%s\n", str);
+    printf("hello%s\n", str);
 
 
     //detach from shared memory

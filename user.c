@@ -70,5 +70,7 @@ void quitSigHandler(int sig)
     shmptr->stop = 1;
     if((shmdt(shmptr)) == -1)
         quit("shmdt");
+
+    printf("quitSigHandler\n\n");
     exit(0);
 }

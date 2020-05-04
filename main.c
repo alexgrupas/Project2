@@ -90,16 +90,17 @@ void alarmSigHandler(int sig)
 {
     int i;
 
-    //clear shared memory
-    if((shmctl(shmid, IPC_RMID, NULL)) == -1)
-        quit("shmctl");
-
     //kill child processes
     for(i = 0; i < 1; ++i) {
         if(childpid != 0) {
             kill(childpid, SIGQUIT);
         }
     }
+
+    wait(NULL);
+    //clear shared memory
+    if((shmctl(shmid, IPC_RMID, NULL)) == -1)
+        quit("shmctl");
 
     //free any allocated memory
     free(shmptr);

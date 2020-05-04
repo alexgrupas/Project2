@@ -31,7 +31,7 @@ int main(int argc, char** argv)
 {
     ID = atoi(argv[1]);
     //register signals
-    signal(SIGTERM, quitSigHandler);
+    signal(SIGQUIT, quitSigHandler);
     signal(SIGINT, interruptSigHandler);
 
     //get shared memory and attach it
@@ -112,6 +112,7 @@ void quitSigHandler(int sig)
 
 void interruptSigHandler(int sig)
 {
+    shmptr->childID[ID-1] = -1;
     if((shmdt(shmptr)) == -1)
         quit("shmdt");
 

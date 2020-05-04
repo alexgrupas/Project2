@@ -72,12 +72,6 @@ void setFlags(int argc, char** argv)
     if(outputFileName == NULL)
         outputFileName = "output.log";
 
-
-    //For testing
-    printf("%d\n", maxChildFlag);
-    printf("%d\n", numChildAtOneTimeFlag);
-    printf("%d\n", numToTestFlag);
-    printf("%d\n", incrementFlag);
 }
 
 void printHelpMessage()

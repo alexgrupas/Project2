@@ -31,7 +31,7 @@ int main(int argc, char** argv)
 {
     ID = atoi(argv[1]);
     //register signals
-    signal(SIGQUIT, quitSigHandler);
+    signal(SIGTERM, quitSigHandler);
     signal(SIGINT, interruptSigHandler);
 
     //get shared memory and attach it

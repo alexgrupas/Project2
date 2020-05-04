@@ -11,7 +11,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2d6d068-e581-4420-b13a-93dc589a7c39" name="Default Changelist" comment="" />
+    <list default="true" id="b2d6d068-e581-4420-b13a-93dc589a7c39" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/user.c" beforeDir="false" afterPath="$PROJECT_DIR$/user.c" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,14 +63,7 @@
       <workItem from="1588282385668" duration="2432000" />
       <workItem from="1588394294311" duration="3042000" />
       <workItem from="1588476489691" duration="25597000" />
-      <workItem from="1588606064477" duration="9331000" />
-    </task>
-    <task id="LOCAL-00016" summary="debugging">
-      <created>1588533478584</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1588533478584</updated>
+      <workItem from="1588606064477" duration="9625000" />
     </task>
     <task id="LOCAL-00017" summary="reworked shared mem">
       <created>1588534906658</created>
@@ -406,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588626499994</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="debugging">
+      <created>1588626708935</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1588626708936</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -448,10 +450,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="456" y="270" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1588533215906" />
-    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1588626499785">
+    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1588626708719">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588626499785" />
+    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588626708719" />
     <state x="593" y="365" width="479" height="192" key="Github.ShareDialog" timestamp="1588282501010">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -476,10 +478,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1398" height="224" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1588570587906" />
-    <state x="320" y="188" key="Vcs.Push.Dialog.v2" timestamp="1588626501131">
+    <state x="320" y="188" key="Vcs.Push.Dialog.v2" timestamp="1588626711196">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="320" y="188" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1588626501131" />
+    <state x="320" y="188" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1588626711196" />
     <state x="508" y="382" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588530822818">
       <screen x="0" y="23" width="1440" height="877" />
     </state>

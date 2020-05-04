@@ -54,7 +54,7 @@ void setFlags(int argc, char** argv)
 
             case '?':
                 if(optopt == 'n' || optopt == 's' || optopt == 'b' || optopt == 'i') {
-                    fprintf("Option -%c requires an argument. \n", optopt);
+                    fprintf(stderr, "Option -%c requires an argument. \n", optopt);
                     exit(1);
                 }
                 break;

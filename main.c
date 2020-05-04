@@ -181,12 +181,12 @@ void alarmSigHandler(int sig)
     {
         num = numToTestFlag + (i * incrementFlag);
         if(shmptr->childID[i] == -1)
-        fprintf("Child %d checked %d and didn't have time to finish checking for primality.\n", i+1, num);
+        fprintf(file, "Child %d checked %d and didn't have time to finish checking for primality.\n", i+1, num);
         else if(shmptr->childID[i] > 0)
         {
-            fprintf("Child %d checked %d and found it to be prime.\n", i+1, num);
+            fprintf(file, "Child %d checked %d and found it to be prime.\n", i+1, num);
         } else {
-            fprintf("Child %d checked %d and found it to be not prime.\n", i+1, num);
+            fprintf(file, "Child %d checked %d and found it to be not prime.\n", i+1, num);
 
         }
     }

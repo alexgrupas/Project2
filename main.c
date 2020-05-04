@@ -6,6 +6,7 @@
 
 //handle alarms
 void alarmSigHandler(int);
+void interuptSigHandler(int);
 
 //function definitions
 void quit(char*);
@@ -30,6 +31,7 @@ int main(int argc, char** argv) {
 
     //setup alarm handlers
     signal(SIGALRM, alarmSigHandler);
+    signal(SIGINT, interuptSigHandler);
 
 
     key_t key = 1234;
@@ -93,6 +95,33 @@ void alarmSigHandler(int sig)
     for(i = 0; i < 1; ++i) {
         if(childpid != 0) {
             kill(childpid, SIGQUIT);
+        }
+    }
+
+    wait(NULL);
+
+    //detach shmptr
+    if((shmdt(shmptr)) == -1)
+        quit("shmdt");
+
+    //clear shared memory
+    if((shmctl(shmid, IPC_RMID, NULL)) == -1)
+        quit("shmctl");
+
+    //free any allocated memory
+    //free(shmptr);
+
+    exit(0);
+}
+
+void interuptSigHandler(int sig)
+{
+    int i;
+
+    //kill child processes
+    for(i = 0; i < 1; ++i) {
+        if(childpid != 0) {
+            kill(childpid, SIGINT);
         }
     }
 

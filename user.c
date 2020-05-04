@@ -11,6 +11,7 @@
 
 //handle signals
 void quitSigHandler(int);
+void interuptSigHandler(int);
 
 //function definitions
 void quit(char*);
@@ -77,5 +78,15 @@ void quitSigHandler(int sig)
         quit("shmdt");
 
     printf("quitSigHandler\n\n");
+    exit(0);
+}
+
+void interuptSigHandler(int sig)
+{
+    shmptr->stop = 1;
+    if((shmdt(shmptr)) == -1)
+        quit("shmdt");
+
+    printf("interuptSigHandler\n\n");
     exit(0);
 }

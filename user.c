@@ -36,7 +36,7 @@ int main(int argc, char** argv)
     //get shared memory and attach it
     int shmid;
     key_t key = 1234;
-    if ((shmid = shmget(key, 1024, 0666)) < 0)
+    if ((shmid = shmget(key, sizeof(shmptr), 0666)) < 0)
         quit("user: shmget");
 
     if ((shmptr = shmat(shmid, NULL, 0)) == (void *) -1)

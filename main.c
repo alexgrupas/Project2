@@ -21,12 +21,14 @@ typedef struct {
 } shared_memory;
 
 
-//
+//global variables
 
 shared_memory *shmptr;
 int shmid;
 pid_t childpid;
-
+int childDead[20];
+char cid[12];
+char incrementedNum[25];
 
 int main(int argc, char** argv) {
     //handle command line arguments
@@ -53,50 +55,66 @@ int main(int argc, char** argv) {
     int inc;
     for(inc = 0; inc < maxChildFlag; ++inc)
     {
+        childDead[inc] = 0;
         shmptr->childID[inc] = inc + 1;
     }
 
-    int i = 1;
     int incrementedNumber = 0;
-    int currentChildProcesses = 0;
+    int totalDeadChildren = 0;
+    //launch numChildAtOneTime many child processes
+    int j;
+    for(j  =  0; j < numChildAtOneTimeFlag; ++j)
+    {
+        childpid = fork();
+        if(childpid == -1)
+            quit("fork");
+
+        if(childpid == 0) {
+            incrementedNumber = numToTestFlag + (j * incrementFlag);
+            sprintf(cid, "%d", j+1);
+            sprintf(incrementedNum, "%d", incrementedNumber);
+            if((execlp("./user", "./user", cid, incrementedNum, (char *)0)) == -1)
+                quit("execlp");
+        }
+    }
+
     while(1) {
         //increment the clock
-        shmptr->clock_nanoseconds += 10000;
+        shmptr->clock_nanoseconds += 10; //change this back to 10000
         if(shmptr->clock_nanoseconds > 1000000000)
         {
             shmptr->clock_nanoseconds = 0;
             shmptr->clock_seconds += 1;
         }
-        //check if we have created the max number of child processes
-        if(i == maxChildFlag)
-            break;
-
-        //check if we have the correct number of currently running child processes
-        if(currentChildProcesses != numChildAtOneTimeFlag)
+        //check to see if any child process has terminated
+        int k;
+        for(k = 0; k < maxChildFlag; ++k)
         {
-            childpid = fork();
-            if(childpid == -1)
-                quit("fork");
-
-            if(childpid == 0) { //we are in the child process
-                //compute number to check for primality
-                incrementedNumber = numToTestFlag + (i - 1 * incrementFlag);
-
-                execl("./user", "./user", i, incrementedNumber, (char *) 0);
-                currentChildProcesses += 1;
-                i += 1;
-                }
-            }
-            int k;
-            for(k = 0; k < maxChildFlag; ++k)
+            if((shmptr->childID[k] != (k+1)) && (childDead[k] == 0))
             {
-                if(shmptr->childID[k] != (k+1))
+                childDead[k] = 1;
+                totalDeadChildren += 1;
+                printf("child %d childID: %d\n", k+1, shmptr->childID[k]); //will eventually print to log file
+                if(totalDeadChildren >= maxChildFlag)
                 {
-                    currentChildProcesses--;
-                    printf("child %d childID: %d\n", k+1, shmptr->childID[k]);
+                    continue;
+                } else {
+                    childpid = fork();
+                    if(childpid == -1)
+                        quit("fork");
+
+                    if(childpid == 0) {
+                        incrementedNumber = numToTestFlag + (totalDeadChildren * incrementFlag);
+                        sprintf(cid, "%d", totalDeadChildren + 1);
+                        sprintf(incrementedNum, "%d", incrementedNumber);
+                        if((execl("./user", "./user", cid, incrementedNum, (char *)0)) == -1)
+                            quit("execlp");
+                    }
                 }
             }
         }
+
+    }
 
 
     //detach shmptr
@@ -129,6 +147,11 @@ void alarmSigHandler(int sig)
 
     wait(NULL);
 
+    int inc;
+    for(inc = 0; inc < maxChildFlag; ++inc)
+    {
+        printf("%d\n", shmptr->childID[inc]);
+    }
     //detach shmptr
     if((shmdt(shmptr)) == -1)
         quit("shmdt");

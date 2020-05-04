@@ -115,7 +115,7 @@ int main(int argc, char** argv) {
                 file = fopen(outputFileName, "a");
                 fprintf(file, "Child %d was found to be terminated at %d s and %d ns\n", k, shmptr->clock_seconds, shmptr->clock_nanoseconds);
                 fclose(file);
-                if(totalDeadChildren >= maxChildFlag-1)
+                if(totalDeadChildren >= maxChildFlag)
                 {
                     continue;
                 } else {

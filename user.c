@@ -45,12 +45,6 @@ int main(int argc, char** argv)
     if ((shmptr = shmat(shmid, NULL, 0)) == (void *) -1)
         quit("user: shmat");
 
-    //remove this
-    if(ID == 2)
-    {
-        shmptr->childID[ID-1] = -1;
-        detach_and_quit();
-    }
 
     //check clock for start time and compute end time
     int clockStartNano = shmptr->clock_nanoseconds;

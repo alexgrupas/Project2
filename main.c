@@ -17,6 +17,7 @@ typedef struct {
     int index;  //key_t key;
     int clock_seconds;
     int clock_nanoseconds;
+    int stop;
 } shared_memory;
 
 shared_memory *shmptr;
@@ -35,7 +36,7 @@ int main(int argc, char** argv) {
     key_t key = 1234;
 
     if((shmid = shmget(key, 1024, 0666 | IPC_CREAT)) < 0)
-        quit("shmget");
+        quit("main: shmget");
 
     if ((shmptr = shmat(shmid, NULL, 0)) == (void *) -1)
         quit("shmat");
@@ -58,7 +59,7 @@ int main(int argc, char** argv) {
 
     while(1)
     {
-        if(shmptr->clock_nanoseconds == 1)
+        if(shmptr->stop == 1)
             break;
         shmptr->clock_nanoseconds = shmptr->clock_nanoseconds + 1;
         if(shmptr->clock_nanoseconds > 1000000)

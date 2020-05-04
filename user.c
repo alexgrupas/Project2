@@ -17,6 +17,7 @@ typedef struct {
     int id;
     int clock_seconds;
     int clock_nanoseconds;
+    int stop;
 } shared_memory;
 
 shared_memory *shmptr;
@@ -31,7 +32,7 @@ int main(int argc, char** argv)
     key = 1234;
 
     if ((shmid = shmget(key, 1024, 0666)) < 0)
-        quit("shmget");
+        quit("user: shmget");
 
     if ((shmptr = shmat(shmid, NULL, 0)) == (void *) -1)
         quit("user: shmat");
@@ -66,7 +67,7 @@ void quit(char* str)
 
 void quitSigHandler(int sig)
 {
-    shmptr->clock_nanoseconds = 1;
+    shmptr->stop = 1;
     if((shmdt(shmptr)) == -1)
         quit("shmdt");
     exit(0);

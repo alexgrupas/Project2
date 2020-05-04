@@ -102,4 +102,6 @@ void alarmSigHandler(int sig)
 
     //free any allocated memory
     free(shmptr);
+
+    exit(0);
 }

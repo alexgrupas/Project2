@@ -62,9 +62,10 @@ void quit(char* str)
     exit(1);
 }
 
-void quitSigHandler(ing sig)
+void quitSigHandler(int sig)
 {
     shmptr->clock_nanoseconds = 1;
     if((shmdt(shmptr)) == -1)
         quit("shmdt");
+    exit(0);
 }

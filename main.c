@@ -107,7 +107,7 @@ void alarmSigHandler(int sig)
         quit("shmctl");
 
     //free any allocated memory
-    free(shmptr);
+    //free(shmptr);
 
     exit(0);
 }

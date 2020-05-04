@@ -115,7 +115,7 @@ int main(int argc, char** argv) {
                 file = fopen(outputFileName, "a");
                 fprintf(file, "Child %d was found to be terminated at %d s and %d ns\n", k, shmptr->clock_seconds, shmptr->clock_nanoseconds);
                 fclose(file);
-                if(totalDeadChildren >= maxChildFlag)
+                if(totalDeadChildren >= (maxChildFlag-1))
                 {
                     continue;
                 } else {
@@ -133,7 +133,7 @@ int main(int argc, char** argv) {
                         fclose(file);
                     }
                     if(childpid == 0) {
-                        incrementedNumber = numToTestFlag + (totalDeadChildren * incrementFlag);
+                        incrementedNumber = numToTestFlag + ((totalDeadChildren + 1) * incrementFlag);
                         sprintf(cid, "%d", childrenCreated);
                         sprintf(incrementedNum, "%d", incrementedNumber);
                         if((execl("./user", "./user", cid, incrementedNum, (char *)0)) == -1)
@@ -180,12 +180,12 @@ void alarmSigHandler(int sig)
     {
         num = numToTestFlag + (i * incrementFlag);
         if(shmptr->childID[i] == -1) {
-            fprintf(file, "Child %d checked %d and didn't have time to finish checking for primality.\n", i + 1, num);
+            fprintf(file, "Child %d checked %d and didn't have time to finish checking for primality.\n", i, num);
         } else if(shmptr->childID[i] > 0)
         {
-            fprintf(file, "Child %d checked %d and found it to be prime.\n", i+1, num);
+            fprintf(file, "Child %d checked %d and found it to be prime.\n", i, num);
         } else {
-            fprintf(file, "Child %d checked %d and found it to be not prime.\n", i+1, num);
+            fprintf(file, "Child %d checked %d and found it to be not prime.\n", i, num);
 
         }
     }
@@ -222,12 +222,12 @@ void interruptSigHandler(int sig)
     {
         num = numToTestFlag + (i * incrementFlag);
         if(shmptr->childID[i] == -1) {
-            fprintf(file, "Child %d checked %d and didn't have time to finish checking for primality.\n", i + 1, num);
+            fprintf(file, "Child %d checked %d and didn't have time to finish checking for primality.\n", i, num);
         } else if(shmptr->childID[i] > 0)
         {
-            fprintf(file, "Child %d checked %d and found it to be prime.\n", i+1, num);
+            fprintf(file, "Child %d checked %d and found it to be prime.\n", i, num);
         } else {
-            fprintf(file, "Child %d checked %d and found it to be not prime.\n", i+1, num);
+            fprintf(file, "Child %d checked %d and found it to be not prime.\n", i, num);
 
         }
     }

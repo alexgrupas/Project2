@@ -34,8 +34,6 @@ int main(int argc, char** argv)
     signal(SIGQUIT, quitSigHandler);
     signal(SIGINT, interruptSigHandler);
 
-
-
     //get shared memory and attach it
     int shmid;
     key_t key = 1234;
@@ -60,6 +58,7 @@ int main(int argc, char** argv)
     }
 
     int numberToCheck = atoi(argv[2]);
+    printf("%d", numberToCheck);
     int not_prime = 0;
     int i;
     for(i = 2; i <= numberToCheck / 2; ++i)

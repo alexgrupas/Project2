@@ -97,7 +97,7 @@ int main(int argc, char** argv) {
                 }
             }
         }
-    }
+
 
     //detach shmptr
     if((shmdt(shmptr)) == -1)

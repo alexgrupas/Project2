@@ -96,7 +96,7 @@ int main(int argc, char** argv) {
 
     while(1) {
         //increment the clock
-        shmptr->clock_nanoseconds += 1; //change this back to 10000
+        shmptr->clock_nanoseconds += 10000; //change this back to 10000
         if(shmptr->clock_nanoseconds > 1000000000)
         {
             shmptr->clock_nanoseconds = 0;

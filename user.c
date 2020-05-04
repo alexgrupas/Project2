@@ -6,6 +6,8 @@
 #include <sys/shm.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <signal.h>
+
 
 //handle signals
 void quitSigHandler(int);

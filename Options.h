@@ -8,6 +8,7 @@
 #include <stdio.h> //printf
 #include <unistd.h> //getopt, pid,
 #include <stdlib.h> //exit, atoi
+#include <string.h>
 
 // Flag Declarations
 extern int helpFlag;
@@ -15,6 +16,7 @@ extern int maxChildFlag;
 extern int numChildAtOneTimeFlag;
 extern int numToTestFlag;
 extern int incrementFlag;
+char *outputFileName;
 
 static void initFlags();
 void setFlags();

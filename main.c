@@ -27,12 +27,19 @@ shared_memory *shmptr;
 int shmid;
 pid_t childpid;
 int childDead[20];
+int pidArr[20];
 char cid[12];
 char incrementedNum[25];
+FILE *file;
+int  childrenCreated = 0;
 
 int main(int argc, char** argv) {
     //handle command line arguments
     setFlags();
+
+    //create log file...erase it if it already exist...then close
+    file = fopen(outputFileName, "w+");
+    fclose(file);
 
     //create some shared memory and attach to it
     key_t key = 1234;
@@ -69,6 +76,16 @@ int main(int argc, char** argv) {
         if(childpid == -1)
             quit("fork");
 
+        if(childpid > 0)
+        {
+            pidArr[j] = childpid;
+            ++childrenCreated;
+        }
+
+        file = fopen(outputFileName, "a");
+        fprintf(file, "Launched child %d at %d s and %d ns.\n", shmptr->childID[j], shmptr->clock_seconds, shmptr->clock_nanoseconds);
+        fclose(file);
+
         if(childpid == 0) {
             incrementedNumber = numToTestFlag + (j * incrementFlag);
             sprintf(cid, "%d", j+1);
@@ -94,7 +111,11 @@ int main(int argc, char** argv) {
             {
                 childDead[k] = 1;
                 totalDeadChildren += 1;
-                printf("child %d childID: %d\n", k+1, shmptr->childID[k]); //will eventually print to log file
+                pidArr[k] = -1;
+
+                file = fopen(outputFileName, "a");
+                fprintf(file, "Child %d was found to be terminated at %d s and %d ns", shmptr->childID[k], shmptr->clock_seconds, shmptr->clock_nanoseconds);
+                fclose(file);
                 if(totalDeadChildren >= maxChildFlag)
                 {
                     continue;
@@ -102,6 +123,15 @@ int main(int argc, char** argv) {
                     childpid = fork();
                     if(childpid == -1)
                         quit("fork");
+
+                    if(childpid > 0)
+                    {
+                        pidArr[childrenCreated] = childpid;
+                    }
+
+                    file = fopen(outputFileName, "a");
+                    fprintf(file, "Launched child %d at %d s and %d ns.\n", shmptr->childID[totalDeadChildren], shmptr->clock_seconds, shmptr->clock_nanoseconds);
+                    fclose(file);
 
                     if(childpid == 0) {
                         incrementedNumber = numToTestFlag + (totalDeadChildren * incrementFlag);
@@ -136,22 +166,32 @@ void quit(char* str)
 
 void alarmSigHandler(int sig)
 {
-    int i;
+    int i, num;
 
     //kill child processes
-    for(i = 0; i < 1; ++i) {
-        if(childpid != 0) {
-            kill(childpid, SIGQUIT);
+    for(i = 0; i < maxChildFlag; ++i) {
+        if(pidArr[i] != -1) {
+            kill(pidArr[i], SIGQUIT);
         }
     }
 
     wait(NULL);
-
-    int inc;
-    for(inc = 0; inc < maxChildFlag; ++inc)
+    file = fopen(outputFileName, "a");
+    for(i = 0; i < maxChildFlag; ++i)
     {
-        printf("%d\n", shmptr->childID[inc]);
+        num = numToTestFlag + (i * incrementFlag);
+        if(shmptr->childID[i] == -1)
+        fprintf("Child %d checked %d and didn't have time to finish checking for primality.\n", i+1, num);
+        else if(shmptr->childID[i] > 0)
+        {
+            fprintf("Child %d checked %d and found it to be prime.\n", i+1, num);
+        } else {
+            fprintf("Child %d checked %d and found it to be not prime.\n", i+1, num);
+
+        }
     }
+    fclose(file);
+
     //detach shmptr
     if((shmdt(shmptr)) == -1)
         quit("shmdt");

@@ -10,6 +10,7 @@ int numChildAtOneTimeFlag;
 int numToTestFlag;
 int incrementFlag;
 
+
 static void initFlags()
 {
     helpFlag = 0;
@@ -24,7 +25,7 @@ void setFlags(int argc, char** argv)
     initFlags();
 
     int opt;
-    while((opt = getopt(argc, argv, "hn:s:"))  != -1)
+    while((opt = getopt(argc, argv, "hn:s:b:i:o:"))  != -1)
     {
         switch (opt) {
             case 'h':
@@ -47,9 +48,15 @@ void setFlags(int argc, char** argv)
                 incrementFlag = atoi(optarg);
                 break;
 
+            case 'o':
+                outputFileName = strdup(optarg);
+                break;
+
             case '?':
-                printf("No argument given with flag(s)... using default\n");
-                printHelpMessage();
+                if(optopt == 'n' || optopt == 's' || optopt == 'b' || optopt == 'i') {
+                    fprintf("Option -%c requires an argument. \n", optopt);
+                    exit(1);
+                }
                 break;
         }
     }
@@ -74,4 +81,5 @@ void setFlags(int argc, char** argv)
 void printHelpMessage()
 {
     printf("This is the help message for now\n");
+    exit(1);
 }

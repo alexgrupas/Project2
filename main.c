@@ -179,9 +179,9 @@ void alarmSigHandler(int sig)
     for(i = 0; i < maxChildFlag; ++i)
     {
         num = numToTestFlag + (i * incrementFlag);
-        if(shmptr->childID[i] == -1)
-        fprintf(file, "Child %d checked %d and didn't have time to finish checking for primality.\n", i+1, num);
-        else if(shmptr->childID[i] > 0)
+        if(shmptr->childID[i] == -1) {
+            fprintf(file, "Child %d checked %d and didn't have time to finish checking for primality.\n", i + 1, num);
+        } else if(shmptr->childID[i] > 0)
         {
             fprintf(file, "Child %d checked %d and found it to be prime.\n", i+1, num);
         } else {
@@ -207,16 +207,31 @@ void alarmSigHandler(int sig)
 
 void interruptSigHandler(int sig)
 {
-    int i;
+    int i, num;
 
     //kill child processes
-    for(i = 0; i < 1; ++i) {
-        if(childpid != 0) {
-            kill(childpid, SIGINT);
+    for(i = 0; i < maxChildFlag; ++i) {
+        if(pidArr[i] != -1) {
+            kill(pidArr[i], SIGQUIT);
         }
     }
 
     wait(NULL);
+    file = fopen(outputFileName, "a");
+    for(i = 0; i < maxChildFlag; ++i)
+    {
+        num = numToTestFlag + (i * incrementFlag);
+        if(shmptr->childID[i] == -1) {
+            fprintf(file, "Child %d checked %d and didn't have time to finish checking for primality.\n", i + 1, num);
+        } else if(shmptr->childID[i] > 0)
+        {
+            fprintf(file, "Child %d checked %d and found it to be prime.\n", i+1, num);
+        } else {
+            fprintf(file, "Child %d checked %d and found it to be not prime.\n", i+1, num);
+
+        }
+    }
+    fclose(file);
 
     //detach shmptr
     if((shmdt(shmptr)) == -1)

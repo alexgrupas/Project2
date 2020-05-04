@@ -34,7 +34,7 @@ int main(int argc, char** argv)
     printf("seconds: %d\n", shmptr->clock_seconds);
     clockStart = shmptr->clock_seconds;
     while(1) {
-        if (shmptr->clock_seconds > (clockStart + 10000000))
+        if (shmptr->clock_seconds > (clockStart + 1000000000))
         {
             printf("seconds: %d\n", shmptr->clock_seconds);
             printf("clock start: %d\n", clockStart);

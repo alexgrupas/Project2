@@ -81,7 +81,7 @@ int main(int argc, char** argv) {
             pidArr[j] = childpid;
             ++childrenCreated;
             file = fopen(outputFileName, "a");
-            fprintf(file, "Launched child %d at %d s and %d ns.\n", shmptr->childID[j], shmptr->clock_seconds, shmptr->clock_nanoseconds);
+            fprintf(file, "Launched:\t child %d at %d s and %d ns.\n", shmptr->childID[j], shmptr->clock_seconds, shmptr->clock_nanoseconds);
             fclose(file);
         }
 
@@ -113,7 +113,7 @@ int main(int argc, char** argv) {
                 pidArr[k] = -1;
 
                 file = fopen(outputFileName, "a");
-                fprintf(file, "Child %d was found to be terminated at %d s and %d ns\n", k, shmptr->clock_seconds, shmptr->clock_nanoseconds);
+                fprintf(file, "\tTerminated: Child %d was found to be terminated at %d s and %d ns.\n", k, shmptr->clock_seconds, shmptr->clock_nanoseconds);
                 fclose(file);
                 if(totalDeadChildren >= (maxChildFlag-1))
                 {
@@ -129,7 +129,7 @@ int main(int argc, char** argv) {
                         ++childrenCreated;
 
                         file = fopen(outputFileName, "a");
-                        fprintf(file, "Launched child %d at %d s and %d ns.\n", childrenCreated, shmptr->clock_seconds, shmptr->clock_nanoseconds);
+                        fprintf(file, "Launched:\t child %d at %d s and %d ns.\n", childrenCreated, shmptr->clock_seconds, shmptr->clock_nanoseconds);
                         fclose(file);
                     }
                     if(childpid == 0) {
@@ -176,6 +176,7 @@ void alarmSigHandler(int sig)
 
     wait(NULL);
     file = fopen(outputFileName, "a");
+    fprintf(file, "\n\nFinal Results\n\n");
     for(i = 0; i < maxChildFlag; ++i)
     {
         num = numToTestFlag + (i * incrementFlag);
@@ -218,6 +219,8 @@ void interruptSigHandler(int sig)
 
     wait(NULL);
     file = fopen(outputFileName, "a");
+    fprintf(file, "\n\nFinal Results\n\n");
+
     for(i = 0; i < maxChildFlag; ++i)
     {
         num = numToTestFlag + (i * incrementFlag);

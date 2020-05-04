@@ -58,7 +58,7 @@ int main(int argc, char** argv)
     }
 
     int numberToCheck = atoi(argv[2]);
-    printf("%d", numberToCheck);
+    printf("%d\n", numberToCheck);
     int not_prime = 0;
     int i;
     for(i = 2; i <= numberToCheck / 2; ++i)

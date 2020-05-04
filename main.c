@@ -127,12 +127,12 @@ int main(int argc, char** argv) {
                     if(childpid > 0)
                     {
                         pidArr[childrenCreated] = childpid;
+                        ++childrenCreated;
+
+                        file = fopen(outputFileName, "a");
+                        fprintf(file, "Launched child %d at %d s and %d ns.\n", childrenCreated, shmptr->clock_seconds, shmptr->clock_nanoseconds);
+                        fclose(file);
                     }
-
-                    file = fopen(outputFileName, "a");
-                    fprintf(file, "Launched child %d at %d s and %d ns.\n", shmptr->childID[totalDeadChildren], shmptr->clock_seconds, shmptr->clock_nanoseconds);
-                    fclose(file);
-
                     if(childpid == 0) {
                         incrementedNumber = numToTestFlag + (totalDeadChildren * incrementFlag);
                         sprintf(cid, "%d", totalDeadChildren + 1);

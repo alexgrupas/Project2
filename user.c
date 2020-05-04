@@ -28,7 +28,7 @@ shared_memory *shmptr;
 
 int main(int argc, char** argv)
 {
-    int ID = argv[2];
+    int ID = atoi(argv[1]);
     //register signals
     signal(SIGQUIT, quitSigHandler);
     signal(SIGINT, interruptSigHandler);
@@ -55,7 +55,7 @@ int main(int argc, char** argv)
         clockStopSec = clockStartSec;
     }
 
-    int numberToCheck = argv[1];
+    int numberToCheck = atoi(argv[2]);
     int not_prime = 0;
     int i;
     for(i = 2; i <= numberToCheck / 2; ++i)
@@ -69,7 +69,7 @@ int main(int argc, char** argv)
             }
         }
         if(numberToCheck % i == 0) {
-            not_primeprime = 1;
+            not_prime = 1;
             shmptr->childID[ID-1] = -1 * numberToCheck;
             detach_and_quit();
             break;

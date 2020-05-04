@@ -4,8 +4,14 @@
 #include <unistd.h>
 #include <signal.h>
 
+//handle alarms
+void alarmSigHandler(int);
+
+//function definitions
 void quit(char*);
 
+
+//shared memory data structure
 typedef struct {
     int id;
     int index;  //key_t key;
@@ -13,23 +19,31 @@ typedef struct {
     int clock_nanoseconds;
 } shared_memory;
 
+shared_memory *shmptr;
+int shmid;
+pid_t childpid;
+
+
 int main(int argc, char** argv) {
+    //handle command line arguments
     setFlags();
 
+    //setup alarm handlers
+    signal(SIGALRM, alarmSigHandler);
+
     key_t key = 1234;
-    shared_memory *shmptr;
-    int shmid;
+
     if((shmid = shmget(key, 1024, 0666 | IPC_CREAT)) < 0)
         quit("shmget");
 
     if ((shmptr = shmat(shmid, NULL, 0)) == (void *) -1)
         quit("shmat");
 
-    shmptr->clock_seconds = 100;
+    shmptr->clock_seconds = 0;
+    shmptr->clock_nanoseconds = 0;
 
 
     //Create child and exec user
-    pid_t childpid;
     childpid = fork();
     if(childpid == -1)
         quit("fork");
@@ -43,7 +57,11 @@ int main(int argc, char** argv) {
     {
         if(shmptr->clock_nanoseconds == 1)
             break;
-        shmptr->clock_seconds = shmptr->clock_seconds + 1;
+        shmptr->clock_nanoseconds = shmptr->clock_nanoseconds + 1;
+        if(shmptr->clock_nanoseconds > 1000000)
+        {
+
+        }
     }
 
 
@@ -62,4 +80,23 @@ void quit(char* str)
 {
     perror(str);
     exit(1);
+}
+
+void alarmSiHandler(int sig)
+{
+    int i;
+
+    //clear shared memory
+    if((shmctl(shmid, IPC_RMID, NULL)) == -1)
+        quit("shmctl");
+
+    //kill child processes
+    for(i = 0; i < 1; ++i) {
+        if(childpid != 0) {
+            kill(childpid, SIGQUIT);
+        }
+    }
+
+    //free any allocated memory
+    free(shmptr);
 }

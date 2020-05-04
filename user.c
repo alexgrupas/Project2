@@ -7,11 +7,14 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+//handle signals
+void quitSigHandler(int);
+
+//function definitions
 void quit(char*);
 
 typedef struct {
     int id;
-    int index;  //key_t key;
     int clock_seconds;
     int clock_nanoseconds;
 } shared_memory;
@@ -30,6 +33,8 @@ int main(int argc, char** argv)
 
     if ((shmptr = shmat(shmid, NULL, 0)) == (void *) -1)
         quit("user: shmat");
+
+    while(1);
 
     printf("seconds: %d\n", shmptr->clock_seconds);
     clockStart = shmptr->clock_seconds;
@@ -55,4 +60,11 @@ void quit(char* str)
 {
     perror(str);
     exit(1);
+}
+
+void quitSigHandler(ing sig)
+{
+    shmptr->clock_nanoseconds = 1;
+    if((shmdt(shmptr)) == -1)
+        quit("shmdt");
 }

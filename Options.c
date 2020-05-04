@@ -69,6 +69,8 @@ void setFlags(int argc, char** argv)
         numToTestFlag = 101;
     if(incrementFlag == 0)
         incrementFlag = 4;
+    if(outputFileName == NULL)
+        outputFileName = "output.log";
 
 
     //For testing

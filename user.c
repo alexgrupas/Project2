@@ -11,7 +11,7 @@
 
 //handle signals
 void quitSigHandler(int);
-void interuptSigHandler(int);
+void interruptSigHandler(int);
 
 //function definitions
 void quit(char*);
@@ -34,6 +34,7 @@ int main(int argc, char** argv)
 
     //register signals
     signal(SIGQUIT, quitSigHandler);
+    signal(SIGINT, interruptSigHandler)
 
     key = 1234;
 
@@ -81,7 +82,7 @@ void quitSigHandler(int sig)
     exit(0);
 }
 
-void interuptSigHandler(int sig)
+void interruptSigHandler(int sig)
 {
     shmptr->stop = 1;
     if((shmdt(shmptr)) == -1)

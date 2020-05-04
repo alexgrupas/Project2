@@ -6,7 +6,7 @@
 
 //handle alarms
 void alarmSigHandler(int);
-void interuptSigHandler(int);
+void interruptSigHandler(int);
 
 //function definitions
 void quit(char*);
@@ -31,7 +31,7 @@ int main(int argc, char** argv) {
 
     //setup alarm handlers
     signal(SIGALRM, alarmSigHandler);
-    signal(SIGINT, interuptSigHandler);
+    signal(SIGINT, interruptSigHandler);
 
 
     key_t key = 1234;
@@ -114,7 +114,7 @@ void alarmSigHandler(int sig)
     exit(0);
 }
 
-void interuptSigHandler(int sig)
+void interruptSigHandler(int sig)
 {
     int i;
 

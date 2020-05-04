@@ -25,10 +25,11 @@ typedef struct {
 
 //need this to be global for signal functions
 shared_memory *shmptr;
+int ID;
 
 int main(int argc, char** argv)
 {
-    int ID = atoi(argv[1]);
+    ID = atoi(argv[1]);
     //register signals
     signal(SIGQUIT, quitSigHandler);
     signal(SIGINT, interruptSigHandler);
@@ -101,6 +102,7 @@ void detach_and_quit()
 
 void quitSigHandler(int sig)
 {
+    shmptr->childID[ID-1] = -1
     if((shmdt(shmptr)) == -1)
         quit("shmdt");
 

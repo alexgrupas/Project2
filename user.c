@@ -19,12 +19,14 @@ typedef struct {
     int clock_nanoseconds;
 } shared_memory;
 
+shared_memory *shmptr;
+
+
 int main(int argc, char** argv)
 {
     int shmid;
     int clockStart;
     key_t key;
-    shared_memory *shmptr;
 
     key = 1234;
 

@@ -62,7 +62,7 @@
       <workItem from="1588282280964" duration="61000" />
       <workItem from="1588282385668" duration="2432000" />
       <workItem from="1588394294311" duration="3042000" />
-      <workItem from="1588476489691" duration="21920000" />
+      <workItem from="1588476489691" duration="22244000" />
     </task>
     <task id="LOCAL-00001" summary="Added an options file and header">
       <created>1588307424924</created>
@@ -379,7 +379,21 @@
       <option name="project" value="LOCAL" />
       <updated>1588565840020</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="fixed some errors">
+      <created>1588566235262</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1588566235262</updated>
+    </task>
+    <task id="LOCAL-00047" summary="fixed some errors">
+      <created>1588566329243</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1588566329243</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -407,7 +421,8 @@
     <MESSAGE value="interupt handler implemented" />
     <MESSAGE value="interupt handler implemented...fixing error" />
     <MESSAGE value="building core functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="building core functionality" />
+    <MESSAGE value="fixed some errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed some errors" />
   </component>
   <component name="WindowStateProjectService">
     <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588476993489">
@@ -418,10 +433,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="456" y="270" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1588533215906" />
-    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1588565839693">
+    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1588566329061">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588565839693" />
+    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588566329061" />
     <state x="593" y="365" width="479" height="192" key="Github.ShareDialog" timestamp="1588282501010">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -446,10 +461,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1398" height="224" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1588556248648" />
-    <state x="320" y="188" key="Vcs.Push.Dialog.v2" timestamp="1588565841372">
+    <state x="320" y="188" key="Vcs.Push.Dialog.v2" timestamp="1588566330671">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="320" y="188" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1588565841372" />
+    <state x="320" y="188" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1588566330671" />
     <state x="508" y="382" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588530822818">
       <screen x="0" y="23" width="1440" height="877" />
     </state>

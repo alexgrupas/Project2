@@ -84,7 +84,7 @@ int main(int argc, char** argv) {
 
                 //put into shmptr the id of our process..might have to put
                 shmptr->childID[i-1] = i;
-                if((execlp("./user", i, incrementedNumber)) == -1)
+                if((execl("user", "user", i, incrementedNumber, NULL)) == -1)
                 {
                     quit("execlp");
                 }else {
@@ -101,21 +101,6 @@ int main(int argc, char** argv) {
         }
         break; // remove this
     }
-
-
-
-
-    while(1)
-    {
-        if(shmptr->stop == 1)
-            break;
-        shmptr->clock_nanoseconds = shmptr->clock_nanoseconds + 1;
-        if(shmptr->clock_nanoseconds > 1000000)
-        {
-
-        }
-    }
-
 
     //detach shmptr
     if((shmdt(shmptr)) == -1)

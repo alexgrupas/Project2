@@ -97,6 +97,11 @@ void alarmSigHandler(int sig)
     }
 
     wait(NULL);
+
+    //detach shmptr
+    if((shmdt(shmptr)) == -1)
+        quit("shmdt");
+
     //clear shared memory
     if((shmctl(shmid, IPC_RMID, NULL)) == -1)
         quit("shmctl");

@@ -62,7 +62,7 @@
       <workItem from="1588282280964" duration="61000" />
       <workItem from="1588282385668" duration="2432000" />
       <workItem from="1588394294311" duration="3042000" />
-      <workItem from="1588476489691" duration="15717000" />
+      <workItem from="1588476489691" duration="16104000" />
     </task>
     <task id="LOCAL-00001" summary="Added an options file and header">
       <created>1588307424924</created>
@@ -316,7 +316,28 @@
       <option name="project" value="LOCAL" />
       <updated>1588556325438</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="working on signals">
+      <created>1588556527840</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1588556527840</updated>
+    </task>
+    <task id="LOCAL-00038" summary="working on signals">
+      <created>1588556692955</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1588556692955</updated>
+    </task>
+    <task id="LOCAL-00039" summary="fixed error...added #include &lt;signal.h&gt; to user.c">
+      <created>1588556738979</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1588556738979</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -340,7 +361,8 @@
     <MESSAGE value="building alarm" />
     <MESSAGE value="fixed error" />
     <MESSAGE value="working on signals" />
-    <option name="LAST_COMMIT_MESSAGE" value="working on signals" />
+    <MESSAGE value="fixed error...added #include &lt;signal.h&gt; to user.c" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed error...added #include &lt;signal.h&gt; to user.c" />
   </component>
   <component name="WindowStateProjectService">
     <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588476993489">
@@ -351,10 +373,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="456" y="270" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1588533215906" />
-    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1588556325254">
+    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1588556738774">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588556325254" />
+    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588556738774" />
     <state x="593" y="365" width="479" height="192" key="Github.ShareDialog" timestamp="1588282501010">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -379,10 +401,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1398" height="224" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1588556248648" />
-    <state x="320" y="188" key="Vcs.Push.Dialog.v2" timestamp="1588556326469">
+    <state x="320" y="188" key="Vcs.Push.Dialog.v2" timestamp="1588556740105">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="320" y="188" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1588556326469" />
+    <state x="320" y="188" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1588556740105" />
     <state x="508" y="382" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588530822818">
       <screen x="0" y="23" width="1440" height="877" />
     </state>

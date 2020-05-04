@@ -82,12 +82,9 @@ int main(int argc, char** argv) {
                 //compute number to check for primality
                 incrementedNumber = numToTestFlag + (i - 1 * incrementFlag);
 
-                if((execl("user", "user", i, incrementedNumber, NULL)) == -1)
-                {
-                    quit("execlp");
-                }else {
-                    currentChildProcesses += 1;
-                    i += 1;
+                execl("./user", "./user", i, incrementedNumber, (char *) 0);
+                currentChildProcesses += 1;
+                i += 1;
                 }
             }
             int k;

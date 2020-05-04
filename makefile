@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -I. -g
-TARGET1 = p2
+TARGET1 = oss
 TARGET2 = user
 OBJS1 = main.o Options.o
 OBJS2 = user.o

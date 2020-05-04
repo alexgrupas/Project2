@@ -11,55 +11,79 @@
 
 //handle signals
 void quitSigHandler(int);
+void interruptSigHandler(int);
 
 //function definitions
 void quit(char*);
+void detach_and_quit();
 
 typedef struct {
-    int id;
+    int childID[20];
     int clock_seconds;
     int clock_nanoseconds;
-    int stop;
 } shared_memory;
 
+//need this to be global for signal functions
 shared_memory *shmptr;
-
+int ID;
 
 int main(int argc, char** argv)
 {
-    int shmid;
-    int clockStart;
-    key_t key;
-
+    ID = atoi(argv[1]);
     //register signals
     signal(SIGQUIT, quitSigHandler);
+    signal(SIGINT, interruptSigHandler);
 
-    key = 1234;
-
-    if ((shmid = shmget(key, 1024, 0666)) < 0)
+    //get shared memory and attach it
+    int shmid;
+    key_t key = 1234;
+    if ((shmid = shmget(key, sizeof(shmptr), 0666)) < 0)
         quit("user: shmget");
 
     if ((shmptr = shmat(shmid, NULL, 0)) == (void *) -1)
         quit("user: shmat");
 
-    while(1);
 
-    printf("seconds: %d\n", shmptr->clock_seconds);
-    clockStart = shmptr->clock_seconds;
-    while(1) {
-        if (shmptr->clock_seconds > (clockStart + 1000000000))
+    //check clock for start time and compute end time
+    int clockStartNano = shmptr->clock_nanoseconds;
+    int clockStartSec = shmptr->clock_seconds;
+    int clockStopNano, clockStopSec;
+    if(clockStartNano > 999000000)
+    {
+        clockStopNano = clockStartNano - 999000000;
+        clockStopSec = clockStartSec + 1;
+    } else {
+        clockStopNano = clockStartNano + 1000000;
+        clockStopSec = clockStartSec;
+    }
+
+    int numberToCheck = atoi(argv[2]);
+    int not_prime = 0;
+    int i;
+    for(i = 2; i <= numberToCheck / 2; ++i)
+    {
+        if(i % 7 == 0)
         {
-            printf("seconds: %d\n", shmptr->clock_seconds);
-            printf("clock start: %d\n", clockStart);
+            if((shmptr->clock_nanoseconds > clockStopNano) && (shmptr->clock_seconds >= clockStopNano))
+            {
+                shmptr->childID[ID] = -1;
+                detach_and_quit();
+            }
+        }
+        if(numberToCheck % i == 0) {
+            not_prime = 1;
+            shmptr->childID[ID] = -1 * numberToCheck;
+            detach_and_quit();
             break;
         }
-
     }
+
+    //If we got here then the number should be prime
+    shmptr->childID[ID] = numberToCheck;
+
     //detach shmptr
-    shmptr->clock_nanoseconds = 1;
     if((shmdt(shmptr)) == -1)
         quit("shmdt");
-
 
     return 0;
 }
@@ -70,12 +94,29 @@ void quit(char* str)
     exit(1);
 }
 
+void detach_and_quit()
+{
+    if((shmdt(shmptr)) == -1)
+        quit("shmdt");
+    exit(0);
+}
+
 void quitSigHandler(int sig)
 {
-    shmptr->stop = 1;
+    shmptr->childID[ID] = -1;
     if((shmdt(shmptr)) == -1)
         quit("shmdt");
 
-    printf("quitSigHandler\n\n");
+    //printf("quitSigHandler\n\n");
+    exit(0);
+}
+
+void interruptSigHandler(int sig)
+{
+    shmptr->childID[ID] = -1;
+    if((shmdt(shmptr)) == -1)
+        quit("shmdt");
+
+    //printf("interruptSigHandler\n\n");
     exit(0);
 }

@@ -29,6 +29,9 @@ int main(int argc, char** argv)
     int clockStart;
     key_t key;
 
+    //register signals
+    signal(SIGQUIT, quitSigHandler);
+
     key = 1234;
 
     if ((shmid = shmget(key, 1024, 0666)) < 0)

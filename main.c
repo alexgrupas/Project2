@@ -14,7 +14,6 @@ void quit(char*);
 //shared memory data structure
 typedef struct {
     int id;
-    int index;  //key_t key;
     int clock_seconds;
     int clock_nanoseconds;
     int stop;

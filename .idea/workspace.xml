@@ -13,7 +13,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b2d6d068-e581-4420-b13a-93dc589a7c39" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user.c" beforeDir="false" afterPath="$PROJECT_DIR$/user.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +62,7 @@
       <workItem from="1588282280964" duration="61000" />
       <workItem from="1588282385668" duration="2432000" />
       <workItem from="1588394294311" duration="3042000" />
-      <workItem from="1588476489691" duration="15384000" />
+      <workItem from="1588476489691" duration="15717000" />
     </task>
     <task id="LOCAL-00001" summary="Added an options file and header">
       <created>1588307424924</created>
@@ -303,7 +302,21 @@
       <option name="project" value="LOCAL" />
       <updated>1588555895790</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="fixed error">
+      <created>1588556193766</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1588556193766</updated>
+    </task>
+    <task id="LOCAL-00036" summary="working on signals">
+      <created>1588556325438</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1588556325438</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,7 +339,8 @@
     <MESSAGE value="working on clock" />
     <MESSAGE value="building alarm" />
     <MESSAGE value="fixed error" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed error" />
+    <MESSAGE value="working on signals" />
+    <option name="LAST_COMMIT_MESSAGE" value="working on signals" />
   </component>
   <component name="WindowStateProjectService">
     <state x="184" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588476993489">
@@ -337,10 +351,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="456" y="270" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1588533215906" />
-    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1588555895582">
+    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1588556325254">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588555895582" />
+    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588556325254" />
     <state x="593" y="365" width="479" height="192" key="Github.ShareDialog" timestamp="1588282501010">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -349,26 +363,26 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="410" y="173" key="Github.UntrackedFilesDialog/0.23.1440.877@0.23.1440.877" timestamp="1588282518987" />
-    <state width="1398" height="224" key="GridCell.Tab.0.bottom" timestamp="1588533417020">
+    <state width="1398" height="224" key="GridCell.Tab.0.bottom" timestamp="1588556248649">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="224" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1588533417020" />
-    <state width="1398" height="224" key="GridCell.Tab.0.center" timestamp="1588533417018">
+    <state width="1398" height="224" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1588556248649" />
+    <state width="1398" height="224" key="GridCell.Tab.0.center" timestamp="1588556248647">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="224" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1588533417018" />
-    <state width="1398" height="224" key="GridCell.Tab.0.left" timestamp="1588533417017">
+    <state width="1398" height="224" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1588556248647" />
+    <state width="1398" height="224" key="GridCell.Tab.0.left" timestamp="1588556248646">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="224" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1588533417017" />
-    <state width="1398" height="224" key="GridCell.Tab.0.right" timestamp="1588533417019">
+    <state width="1398" height="224" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1588556248646" />
+    <state width="1398" height="224" key="GridCell.Tab.0.right" timestamp="1588556248648">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="224" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1588533417019" />
-    <state x="320" y="188" key="Vcs.Push.Dialog.v2" timestamp="1588555896779">
+    <state width="1398" height="224" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1588556248648" />
+    <state x="320" y="188" key="Vcs.Push.Dialog.v2" timestamp="1588556326469">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="320" y="188" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1588555896779" />
+    <state x="320" y="188" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1588556326469" />
     <state x="508" y="382" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588530822818">
       <screen x="0" y="23" width="1440" height="877" />
     </state>

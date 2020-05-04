@@ -32,7 +32,7 @@ int main(int argc, char** argv) {
     setFlags();
 
     //malloc necessary space for child process id's
-    shmptr->childID = (int *)realloc(maxChildFlag * sizeof(int));
+    shmptr->childID = (int *)realloc(shmptr->childID, maxChildFlag * sizeof(int));
     //create some shared memory and attach to it
     key_t key = 1234;
 

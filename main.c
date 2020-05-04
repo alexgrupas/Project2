@@ -31,6 +31,7 @@ int main(int argc, char** argv) {
     //setup alarm handlers
     signal(SIGALRM, alarmSigHandler);
 
+
     key_t key = 1234;
 
     if((shmid = shmget(key, 1024, 0666 | IPC_CREAT)) < 0)
@@ -52,6 +53,8 @@ int main(int argc, char** argv) {
         execlp("./user", NULL);
         exit(1);
     }
+
+    alarm(2);
 
     while(1)
     {

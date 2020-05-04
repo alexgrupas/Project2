@@ -34,7 +34,7 @@ int main(int argc, char** argv)
 
     //register signals
     signal(SIGQUIT, quitSigHandler);
-    signal(SIGINT, interruptSigHandler)
+    signal(SIGINT, interruptSigHandler);
 
     key = 1234;
 

@@ -60,7 +60,7 @@ int main(int argc, char** argv)
     int i;
     for(i = 2; i <= numberToCheck / 2; ++i)
     {
-        if(i % 4 == 0)
+        if(i % 7 == 0)
         {
             if((shmptr->clock_nanoseconds > clockStopNano) && (shmptr->clock_seconds >= clockStopNano))
             {

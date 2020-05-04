@@ -82,8 +82,6 @@ int main(int argc, char** argv) {
                 //compute number to check for primality
                 incrementedNumber = numToTestFlag + (i - 1 * incrementFlag);
 
-                //put into shmptr the id of our process..might have to put
-                shmptr->childID[i-1] = i;
                 if((execl("user", "user", i, incrementedNumber, NULL)) == -1)
                 {
                     quit("execlp");

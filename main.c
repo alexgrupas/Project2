@@ -85,7 +85,7 @@ void quit(char* str)
     exit(1);
 }
 
-void alarmSiHandler(int sig)
+void alarmSigHandler(int sig)
 {
     int i;
 

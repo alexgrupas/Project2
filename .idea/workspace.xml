@@ -63,21 +63,7 @@
       <workItem from="1588282385668" duration="2432000" />
       <workItem from="1588394294311" duration="3042000" />
       <workItem from="1588476489691" duration="25597000" />
-      <workItem from="1588606064477" duration="8311000" />
-    </task>
-    <task id="LOCAL-00010" summary="debugging">
-      <created>1588531338178</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1588531338178</updated>
-    </task>
-    <task id="LOCAL-00011" summary="debugging">
-      <created>1588532133883</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1588532133883</updated>
+      <workItem from="1588606064477" duration="8619000" />
     </task>
     <task id="LOCAL-00012" summary="debugging">
       <created>1588532206787</created>
@@ -408,7 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1588625389180</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="debugging">
+      <created>1588625658575</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1588625658575</updated>
+    </task>
+    <task id="LOCAL-00060" summary="debugging">
+      <created>1588625748051</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1588625748051</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -450,10 +450,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="456" y="270" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.877@0.23.1440.877" timestamp="1588533215906" />
-    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1588625388970">
+    <state x="217" y="23" key="CommitChangelistDialog2" timestamp="1588625747766">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588625388970" />
+    <state x="217" y="23" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1588625747766" />
     <state x="593" y="365" width="479" height="192" key="Github.ShareDialog" timestamp="1588282501010">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
@@ -478,10 +478,10 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1398" height="224" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1588570587906" />
-    <state x="320" y="188" key="Vcs.Push.Dialog.v2" timestamp="1588625391205">
+    <state x="320" y="188" key="Vcs.Push.Dialog.v2" timestamp="1588625749351">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="320" y="188" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1588625391205" />
+    <state x="320" y="188" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1588625749351" />
     <state x="508" y="382" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588530822818">
       <screen x="0" y="23" width="1440" height="877" />
     </state>

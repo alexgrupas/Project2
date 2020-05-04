@@ -18,7 +18,7 @@ void quit(char*);
 void detach_and_quit();
 
 typedef struct {
-    int *childID;
+    int childID[20];
     int clock_seconds;
     int clock_nanoseconds;
 } shared_memory;

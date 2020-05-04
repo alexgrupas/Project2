@@ -10,11 +10,12 @@ void interruptSigHandler(int);
 
 //function definitions
 void quit(char*);
+void cleanup();
 
 
 //shared memory data structure
 typedef struct {
-    int *childID;
+    int childID[20];
     int clock_seconds;
     int clock_nanoseconds;
 } shared_memory;
@@ -31,11 +32,8 @@ int main(int argc, char** argv) {
     //handle command line arguments
     setFlags();
 
-    //malloc necessary space for child process id's
-    shmptr->childID = (int *)realloc(shmptr->childID, maxChildFlag * sizeof(int));
     //create some shared memory and attach to it
     key_t key = 1234;
-
     if((shmid = shmget(key, sizeof(shmptr), 0666 | IPC_CREAT)) < 0)
         quit("main: shmget");
 
@@ -51,12 +49,17 @@ int main(int argc, char** argv) {
     signal(SIGINT, interruptSigHandler);
     alarm(2);
 
+    //set child process id's in shared memory
+    int inc;
+    for(inc = 0; inc < maxChildFlag; ++inc)
+    {
+        shmptr->childID[inc] = inc + 1;
+    }
+
     int i = 1;
     int incrementedNumber = 0;
     int currentChildProcesses = 0;
-    int totalChildProcesses = 0;
-    while(1)
-    {
+    while(1) {
         //increment the clock
         shmptr->clock_nanoseconds += 10000;
         if(shmptr->clock_nanoseconds > 1000000000)
@@ -64,14 +67,11 @@ int main(int argc, char** argv) {
             shmptr->clock_nanoseconds = 0;
             shmptr->clock_seconds += 1;
         }
-
         //check if we have created the max number of child processes
-        if(totalChildProcesses == (maxChildFlag - 1))
-        {
-            //we are done creating children
-        }
+        if(i == maxChildFlag)
+            break;
 
-        //check if we have the correct number of currently running chld processes
+        //check if we have the correct number of currently running child processes
         if(currentChildProcesses != numChildAtOneTimeFlag)
         {
             childpid = fork();
@@ -88,18 +88,20 @@ int main(int argc, char** argv) {
                 {
                     quit("execlp");
                 }else {
-                    totalChildProcesses += 1;
                     currentChildProcesses += 1;
                     i += 1;
                 }
             }
-
-            if(shmptr->childID[0] != 1)
+            int k;
+            for(k = 0; k < maxChildFlag; ++k)
             {
-                printf("child %d gave %d", 1, shmptr->childID[0]);
+                if(shmptr->childID[k] != (k+1))
+                {
+                    currentChildProcesses--;
+                    printf("child %d childID: %d\n", k+1, shmptr->childID[k]);
+                }
             }
         }
-        break; // remove this
     }
 
     //detach shmptr
@@ -171,4 +173,15 @@ void interruptSigHandler(int sig)
     //free(shmptr);
 
     exit(0);
+}
+
+void cleanup()
+{
+    //detach shmptr
+    if((shmdt(shmptr)) == -1)
+        quit("shmdt");
+
+    //clear shared memory
+    if((shmctl(shmid, IPC_RMID, NULL)) == -1)
+        quit("shmctl");
 }

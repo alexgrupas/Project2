@@ -63,7 +63,7 @@ int main(int argc, char** argv) {
     for(inc = 0; inc < maxChildFlag; ++inc)
     {
         childDead[inc] = 0;
-        shmptr->childID[inc] = inc + 1;
+        shmptr->childID[inc] = inc;
     }
 
     int incrementedNumber = 0;
@@ -87,7 +87,7 @@ int main(int argc, char** argv) {
 
         if(childpid == 0) {
             incrementedNumber = numToTestFlag + (j * incrementFlag);
-            sprintf(cid, "%d", j+1);
+            sprintf(cid, "%d", j);
             sprintf(incrementedNum, "%d", incrementedNumber);
             if((execlp("./user", "./user", cid, incrementedNum, (char *)0)) == -1)
                 quit("execlp");
@@ -106,14 +106,14 @@ int main(int argc, char** argv) {
         int k;
         for(k = 0; k < maxChildFlag; ++k)
         {
-            if((shmptr->childID[k] != (k+1)) && (childDead[k] == 0))
+            if((shmptr->childID[k] != (k)) && (childDead[k] == 0))
             {
                 childDead[k] = 1;
                 totalDeadChildren += 1;
                 pidArr[k] = -1;
 
                 file = fopen(outputFileName, "a");
-                fprintf(file, "Child %d was found to be terminated at %d s and %d ns\n", k+1, shmptr->clock_seconds, shmptr->clock_nanoseconds);
+                fprintf(file, "Child %d was found to be terminated at %d s and %d ns\n", k, shmptr->clock_seconds, shmptr->clock_nanoseconds);
                 fclose(file);
                 if(totalDeadChildren >= maxChildFlag-1)
                 {
@@ -134,7 +134,7 @@ int main(int argc, char** argv) {
                     }
                     if(childpid == 0) {
                         incrementedNumber = numToTestFlag + (totalDeadChildren * incrementFlag);
-                        sprintf(cid, "%d", totalDeadChildren + 1);
+                        sprintf(cid, "%d", childrenCreated);
                         sprintf(incrementedNum, "%d", incrementedNumber);
                         if((execl("./user", "./user", cid, incrementedNum, (char *)0)) == -1)
                             quit("execlp");

@@ -74,20 +74,20 @@ int main(int argc, char** argv)
         {
             if((shmptr->clock_nanoseconds > clockStopNano) && (shmptr->clock_seconds >= clockStopNano))
             {
-                shmptr->childID[ID-1] = -1;
+                shmptr->childID[ID] = -1;
                 detach_and_quit();
             }
         }
         if(numberToCheck % i == 0) {
             not_prime = 1;
-            shmptr->childID[ID-1] = -1 * numberToCheck;
+            shmptr->childID[ID] = -1 * numberToCheck;
             detach_and_quit();
             break;
         }
     }
 
     //If we got here then the number should be prime
-    shmptr->childID[ID-1] = numberToCheck;
+    shmptr->childID[ID] = numberToCheck;
 
     //detach shmptr
     if((shmdt(shmptr)) == -1)
@@ -111,7 +111,7 @@ void detach_and_quit()
 
 void quitSigHandler(int sig)
 {
-    shmptr->childID[ID-1] = -1;
+    shmptr->childID[ID] = -1;
     if((shmdt(shmptr)) == -1)
         quit("shmdt");
 
@@ -121,7 +121,7 @@ void quitSigHandler(int sig)
 
 void interruptSigHandler(int sig)
 {
-    shmptr->childID[ID-1] = -1;
+    shmptr->childID[ID] = -1;
     if((shmdt(shmptr)) == -1)
         quit("shmdt");
 

@@ -80,11 +80,10 @@ int main(int argc, char** argv) {
         {
             pidArr[j] = childpid;
             ++childrenCreated;
+            file = fopen(outputFileName, "a");
+            fprintf(file, "Launched child %d at %d s and %d ns.\n", shmptr->childID[j], shmptr->clock_seconds, shmptr->clock_nanoseconds);
+            fclose(file);
         }
-
-        file = fopen(outputFileName, "a");
-        fprintf(file, "Launched child %d at %d s and %d ns.\n", shmptr->childID[j], shmptr->clock_seconds, shmptr->clock_nanoseconds);
-        fclose(file);
 
         if(childpid == 0) {
             incrementedNumber = numToTestFlag + (j * incrementFlag);

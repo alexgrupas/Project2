@@ -102,7 +102,7 @@ void detach_and_quit()
 
 void quitSigHandler(int sig)
 {
-    shmptr->childID[ID-1] = -1
+    shmptr->childID[ID-1] = -1;
     if((shmdt(shmptr)) == -1)
         quit("shmdt");
 

@@ -114,7 +114,7 @@ int main(int argc, char** argv) {
                 pidArr[k] = -1;
 
                 file = fopen(outputFileName, "a");
-                fprintf(file, "Child %d was found to be terminated at %d s and %d ns", shmptr->childID[k], shmptr->clock_seconds, shmptr->clock_nanoseconds);
+                fprintf(file, "Child %d was found to be terminated at %d s and %d ns\n", k+1, shmptr->clock_seconds, shmptr->clock_nanoseconds);
                 fclose(file);
                 if(totalDeadChildren >= maxChildFlag)
                 {

@@ -76,6 +76,13 @@ void setFlags(int argc, char** argv)
 
 void printHelpMessage()
 {
-    printf("This is the help message for now\n");
-    exit(1);
+    printf("Usage: -n [int] -s [int] -b [int] -i [int] -o [output file name]\n");
+    printf("\"-n\" Maximum number of child processes to be created by oss.\n");
+    printf("\"-s\" Maximum number of child processes to exist at one  timie.\n");
+    printf("\"-b\" First number to check for primality.\n");
+    printf("\"-i\" Increment the number we check for primality by this much during each child process creation.\n");
+    printf("\"-o\" Output file name.\n");
+    printf("If these options are not given by the user then the defaults will be as follows:\n");
+    printf("n = 4\ns = 2\nb = 101\ni = 4\no = output.log\n");
+
 }
